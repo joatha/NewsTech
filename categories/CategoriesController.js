@@ -18,7 +18,8 @@ router.post("/categories/save", (req, res)=>{
             title: title,
             slug:slugify(title)
         }).then(()=>{
-            res.redirect("/")
+            res.redirect("/admin/categories")
+
         }).catch((err)=>{
             console.log("Erro ao cadastrar no banco", err)
         })
@@ -61,5 +62,39 @@ router.post("/categories/delete", (req, res)=>{
     }
 })
 
+router.get("/admin/categories/edit/:id", (req,res)=>{
+    var id = req.params.id
+
+    if(isNaN(id)){
+        res.redirect("/admin/categories")
+
+    }
+    Category.findByPk(id).then((categories)=>{
+
+        if(categories != undefined){
+                res.render("admin/categories/edit", {categories: categories})
+
+        }else{
+            res.redirect("/admin/categories")
+        }
+
+    }).catch(err =>{
+        res.redirect("/admin/categories")
+    })
+})
+
+router.post("/categories/update", (req, res)=>{
+    var id= req.body.id
+    var title = req.body.title
+
+    Category.update({title: title, slug: slugify(title)}, {
+        where:{
+            id: id
+        }
+    }).then(()=>{
+        res.redirect("/admin/categories")
+    })
+
+})
 
 module.exports = router
