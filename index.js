@@ -33,7 +33,8 @@ app.use("/", artigosContrle)
 
 app.get("/", (req, res) =>{
 
-    Article.findAll({
+    Article.findAll({ 
+        
         order:[
             ['id', 'DESC']
         ]
