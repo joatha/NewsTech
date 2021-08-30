@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true}))
 
 conexaoComBanco.authenticate().then(()=>{
     
-    console.log("Conexão realizada com sucesso!")  
+    console.log("Conexão realizada com sucesso!!")  
 }).catch((err)=>{
     console.log("erro ao se conectar com o banco de dados", err)
 })
