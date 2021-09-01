@@ -44,7 +44,7 @@ app.get("/", (req, res) =>{
     }).then(articles =>{
 
         Category.findAll().then(categories =>{
-            res.render("index", {articles: articles, categories: categories})
+            res.render("index", {articles: articles, categories: categories })
         })
 
     })
@@ -69,5 +69,5 @@ app.get("/:slug", (req,res)=>{
 })
 
 app.listen(2000, ()=>{
-    console.log("Servidor rodando com sucesso!")
+    console.log("Servidor rodando com sucesso!!")
 })
