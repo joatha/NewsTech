@@ -34,7 +34,7 @@ app.use("/", categoriasControle)
 
 app.use("/", artigosContrle)
 
-app.get("/", (req, res) =>{
+app.get("/", (req, res ) =>{
 
     Article.findAll({ 
         
@@ -44,7 +44,7 @@ app.get("/", (req, res) =>{
     }).then(articles =>{
 
         Category.findAll().then(categories =>{
-            res.render("index", {articles: articles, categories: categories })
+            res.render("index", {articles: articles, categories: categories})
         })
 
     })
